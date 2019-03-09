@@ -1,0 +1,238 @@
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 13168
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:29:01 CST] [Thread:pool-1-thread-5 : 19] [Time:13693] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:29:25 CST] [Thread:pool-1-thread-8 : 23] [Time:13717] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:50:963 CST] [Thread:pool-1-thread-6 : 21] [Time:35655] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:50:963 CST] [Thread:pool-1-thread-7 : 22] [Time:35655] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:50:967 CST] [Thread:pool-1-thread-2 : 16] [Time:35659] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:04:51:32 CST] [Thread:pool-1-thread-7 : 22] [Time:35724] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.dockerfly.HttpFilter.RoleFilter.userOperation(RoleFilter.java:90)
+        org.voovan.dockerfly.HttpFilter.RoleFilter.onInvoke(RoleFilter.java:194)
+        org.voovan.dockerfly.HttpFilter.RoleFilter.onRequest(RoleFilter.java:217)
+        org.voovan.http.server.HttpDispatcher.disposeFilter(HttpDispatcher.java:323)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:129)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+User [null] logined.
+User [null] logined.
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 14861
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:08:10:432 CST] [Thread:pool-1-thread-5 : 19] [Time:6120] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:08:10:487 CST] [Thread:pool-1-thread-8 : 23] [Time:6174] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+User [null] logined.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:11:50:540 CST] [Thread:main : 1] [Time:158] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:18:05:657 CST] [Thread:main : 1] [Time:29] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:20:31:790 CST] [Thread:main : 1] [Time:76] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:20:43:686 CST] [Thread:main : 1] [Time:47] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:21:14:904 CST] [Thread:main : 1] [Time:46] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:23:00:333 CST] [Thread:main : 1] [Time:24] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select count(*) count from sqlite_master where tbl_name = 'DF_USER'
+
+Database not init , initalize now.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:23:00:456 CST] [Thread:main : 1] [Time:137] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: CREATE TABLE "DF_USER" (
+	 "UserId" integer NOT NULL DEFAULT 0 PRIMARY KEY AUTOINCREMENT,
+	 "UserName" varchar(50,0) NOT NULL,
+	 "Password" varchar(50,0) NOT NULL,
+	 "Role" varchar(50,0) NOT NULL,
+	 "DefaultHost" integer,
+	 "Hosts" varchar(5000,0),
+	 "Registrys" varchar(5000,0),
+	 "CreateDate" varchar(50,0) NOT NULL DEFAULT (datetime('now', 'localtime')||'.000')
+)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:23:00:477 CST] [Thread:main : 1] [Time:158] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: CREATE UNIQUE INDEX "uk_username" ON DF_USER ("UserName" ASC)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:23:00:489 CST] [Thread:main : 1] [Time:170] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: insert into df_user (UserName, Password, Role, DefaultHost, Hosts, Registrys)
+select 'admin', '1234', 'Admin', 0, ({debug=true, port=2735, ipAddress=127.0.0.1, name=Default, timeout=15}), )
+
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 20134
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:23:27:223 CST] [Thread:pool-1-thread-5 : 19] [Time:4646] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:23:27:322 CST] [Thread:pool-1-thread-8 : 23] [Time:4745] (DataBaseUtils.java:77) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+DataBaseUtils.initDataBase create [DF_USER] table error: 
+
+User [null] logined.
+User [null] logined.
