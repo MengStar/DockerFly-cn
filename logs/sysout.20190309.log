@@ -236,3 +236,441 @@ DataBaseUtils.initDataBase create [DF_USER] table error:
 
 User [null] logined.
 User [null] logined.
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 21444
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:28:11:193 CST] [Thread:main : 1] [Time:229] (WebServer.java:297) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Start HTTP server error => java.net.BindException: Address already in use
+        sun.nio.ch.Net.bind0(Native Method)
+        sun.nio.ch.Net.bind(Net.java:433)
+        sun.nio.ch.Net.bind(Net.java:425)
+        sun.nio.ch.AsynchronousServerSocketChannelImpl.bind(AsynchronousServerSocketChannelImpl.java:162)
+        org.voovan.network.aio.AioServerSocket.syncStart(AioServerSocket.java:112)
+        org.voovan.network.aio.AioServerSocket.start(AioServerSocket.java:98)
+        org.voovan.http.server.WebServer.serve(WebServer.java:295)
+        org.voovan.http.server.WebServer.main(WebServer.java:438)
+
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 21607
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:28:44:484 CST] [Thread:pool-1-thread-5 : 19] [Time:3490] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select count(*) count from sqlite_master where tbl_name = 'DF_USER'
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:28:44:525 CST] [Thread:pool-1-thread-8 : 23] [Time:3531] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select count(*) count from sqlite_master where tbl_name = 'DF_USER'
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:28:51:45 CST] [Thread:pool-1-thread-4 : 18] [Time:10051] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select UserId, UserName, Role, DefaultHost, Hosts, Registrys, CreateDate from df_user where UserName='admin' and Password='1234'
+
+User [admin] logined.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:28:51:69 CST] [Thread:pool-1-thread-6 : 21] [Time:10075] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => org.voovan.tools.exception.MemoryReleasedException: ByteBufferChannel is released.
+        org.voovan.tools.ByteBufferChannel.tryRelease(ByteBufferChannel.java:107)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:751)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:30:48:929 CST] [Thread:pool-1-thread-14 : 29] [Time:127935] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:30:55:426 CST] [Thread:pool-1-thread-11 : 26] [Time:134432] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select UserId, UserName, Role, DefaultHost, Hosts, Registrys, CreateDate from df_user where UserName='admin' and Password='admin'
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:31:14:103 CST] [Thread:pool-1-thread-14 : 29] [Time:153109] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select UserId, UserName, Role, DefaultHost, Hosts, Registrys, CreateDate from df_user where UserName='admin' and Password='admin'
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:31:19:670 CST] [Thread:pool-1-thread-13 : 28] [Time:158677] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.IndexOutOfBoundsException: null
+        org.voovan.tools.ByteBufferChannel.get(ByteBufferChannel.java:362)
+        org.voovan.tools.ByteBufferChannel.indexOf(ByteBufferChannel.java:736)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:762)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 22:31:19:671 CST] [Thread:pool-1-thread-10 : 25] [Time:158677] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 22:33:01:355 CST] [Thread:pool-1-thread-24 : 39] [Time:260361] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select UserId, UserName, Role, DefaultHost, Hosts, Registrys, CreateDate from df_user where UserName='admin' and Password='admin'
+
+*********************************************************************************************
+
+   ==            ==  ==========   ==========  ==            ==  ====       ==  ==       ==	
+    ==          ==  ==        == ==        ==  ==          ==  ==  ==      ==   ==      ==	
+     ==        ==   ==        == ==        ==   ==        ==  ==    ==     ==    ==     ==	
+      ==      ==    ==        == ==        ==    ==      ==  ==      ==    ==     ==    ==   
+       ==    ==     ==        == ==        ==     ==    ==  ============   ==      ==   ==   
+        ==  ==      ==        == ==        ==      ==  ==  ==          ==  ==       ==  ==	
+         ====        ==========   ==========        ====  ==            == ==        == ==	
+
+*********************************************************************************************
+
+============================== [Config file parameter list] =================================
+  Timeout:                         1800
+  ContextPath:                     /Users/MengStar/IdeaProjects/DockerFly-master/WEBAPP
+  CharacterSet:                    UTF-8
+  SessionContainer:                java.util.Hashtable
+  SessionTimeout:                  30
+  KeepAliveTimeout:                60
+  MatchRouteIgnoreCase:            true
+  Gzip:                            true
+  AccessLog:                       false
+=============================================================================================
+  This WebServer based on VoovanFramework.
+  Version: Voovan-WebServer/v2.0.2
+  WebSite: http://www.voovan.org
+  Author: helyho
+  E-mail: helyho@gmail.com
+=============================================================================================
+Load HttpFilter [DO_Filter] by [org.voovan.dockerfly.HttpFilter.RoleFilter]
+Load HttpModule [Vestful 模块] on [ajax] by [org.voovan.vestful.RestfulModule]
+=============================================================================================
+Process ID: 30614
+WebServer working on: http://0.0.0.0:28083 ...
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 23:55:00:91 CST] [Thread:pool-1-thread-2 : 16] [Time:56587] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select UserId, UserName, Role, DefaultHost, Hosts, Registrys, CreateDate from df_user where UserName='admin' and Password='1234'
+
+User [admin] logined.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:55:00:580 CST] [Thread:pool-1-thread-1 : 15] [Time:57077] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.IndexOutOfBoundsException: null
+        org.voovan.tools.ByteBufferChannel.get(ByteBufferChannel.java:362)
+        org.voovan.tools.ByteBufferChannel.indexOf(ByteBufferChannel.java:736)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:762)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:55:55:439 CST] [Thread:pool-1-thread-5 : 19] [Time:111935] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:55:55:477 CST] [Thread:pool-1-thread-4 : 18] [Time:111973] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.IndexOutOfBoundsException: null
+        org.voovan.tools.ByteBufferChannel.get(ByteBufferChannel.java:362)
+        org.voovan.tools.ByteBufferChannel.indexOf(ByteBufferChannel.java:736)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:762)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:55:59:668 CST] [Thread:pool-1-thread-1 : 15] [Time:116165] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /swarm, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /nodes?filters=%7B%7D, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /swarm, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /swarm, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:56:47:139 CST] [Thread:pool-1-thread-3 : 17] [Time:163635] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.IndexOutOfBoundsException: null
+        org.voovan.tools.ByteBufferChannel.get(ByteBufferChannel.java:362)
+        org.voovan.tools.ByteBufferChannel.indexOf(ByteBufferChannel.java:736)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:762)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:56:50:123 CST] [Thread:pool-1-thread-6 : 21] [Time:166620] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => org.voovan.tools.exception.MemoryReleasedException: ByteBufferChannel is released.
+        org.voovan.tools.ByteBufferChannel.tryRelease(ByteBufferChannel.java:107)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:751)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:56:51:184 CST] [Thread:pool-1-thread-5 : 19] [Time:167680] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => org.voovan.tools.exception.MemoryReleasedException: ByteBufferChannel is released.
+        org.voovan.tools.ByteBufferChannel.tryRelease(ByteBufferChannel.java:107)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:751)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /services?filters=%7B%7D, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /tasks?filters=%7B%7D, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /networks?filters=%7B%7D, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /tasks?filters=%7B%7D, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:56:54:603 CST] [Thread:pool-1-thread-8 : 23] [Time:171099] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => org.voovan.tools.exception.MemoryReleasedException: ByteBufferChannel is released.
+        org.voovan.tools.ByteBufferChannel.tryRelease(ByteBufferChannel.java:107)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:751)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /images/json?filters=%7B%7D, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /swarm, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /info, Method:GET, Data: null
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /containers/json?all=true&filters=%7B%7D, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:57:08:564 CST] [Thread:pool-1-thread-2 : 16] [Time:185060] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => java.lang.NullPointerException: null
+        org.voovan.http.message.packet.Cookie.newInstance(Cookie.java:184)
+        org.voovan.http.server.SessionManager.newHttpSession(SessionManager.java:162)
+        org.voovan.http.server.HttpDispatcher.disposeSession(HttpDispatcher.java:291)
+        org.voovan.http.server.HttpDispatcher.process(HttpDispatcher.java:126)
+        org.voovan.http.server.WebServerHandler.disposeHttp(WebServerHandler.java:197)
+        org.voovan.http.server.WebServerHandler.onReceive(WebServerHandler.java:171)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:148)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /networks?filters=%7B%7D, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[ERROR] [2019-03-09 23:57:31:559 CST] [Thread:pool-1-thread-4 : 18] [Time:208055] (WebServerHandler.java:369) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Http Server Error => org.voovan.tools.exception.MemoryReleasedException: ByteBufferChannel is released.
+        org.voovan.tools.ByteBufferChannel.tryRelease(ByteBufferChannel.java:107)
+        org.voovan.tools.ByteBufferChannel.readLine(ByteBufferChannel.java:751)
+        org.voovan.http.message.HttpParser.parser(HttpParser.java:242)
+        org.voovan.http.message.HttpParser.parseRequest(HttpParser.java:483)
+        org.voovan.http.server.WebServerFilter.decode(WebServerFilter.java:62)
+        org.voovan.network.EventProcess.filterDecoder(EventProcess.java:176)
+        org.voovan.network.EventProcess.onRead(EventProcess.java:142)
+        org.voovan.network.EventProcess.process(EventProcess.java:335)
+        org.voovan.network.EventThread.run(EventThread.java:34)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        java.lang.Thread.run(Thread.java:748)
+
+[DEBUG INFO] RootURL: http://127.0.0.1:2735, Charset: UTF-8, TimeOut: 15
+[DEBUG INFO] SubURL: /volumes?filters=%7B%7D, Method:GET, Data: null
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[DEBUG] [2019-03-09 23:57:46:825 CST] [Thread:pool-1-thread-2 : 16] [Time:223321] (TSQL.java:91) 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+[SQL_Executed]: select count(*) count from sqlite_master where tbl_name = 'DF_USER'
+
