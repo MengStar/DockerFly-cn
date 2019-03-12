@@ -78,6 +78,7 @@
                         cmdContainerLogs.tail(this.logInfo.lineCount);
 
                         var logData = cmdContainerLogs.send().split("\u000a");
+                        console.log(logData);
                         for(var logIndex in logData){
                             var logLine = logData[logIndex];
                             if(!(logLine instanceof Function) && logIndex != logData.length-1) {
