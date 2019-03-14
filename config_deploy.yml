@@ -16,8 +16,8 @@ services:
         delay: 5s
     networks:
       - arcms
-    ports:
-      - 8090:8090
+    # ports:
+    #   - 8090:8090
   portal:
     image: registry.cn-hangzhou.aliyuncs.com/mengstars/portal
     deploy:
