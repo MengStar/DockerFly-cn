@@ -1,44 +1,29 @@
 version: '3.2'
 services:
   sync:
-    image: registry.cn-hangzhou.aliyuncs.com/mengstars/sync:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/sync
     deploy:
       replicas: 1
-      labels:
-        - com.df.notify=true
-        - com.df.distribute=true
-        - com.df.serviceDomain=api.cnblogs.com
-        - com.df.port=80
     networks:
       - arcms
     ports:
       - 8080:8080
   admin:
-    image: registry.cn-hangzhou.aliyuncs.com/mengstars/admin:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/admin
     deploy:
       replicas: 2
       update_config:
         delay: 5s
-      labels:
-        - com.df.notify=true
-        - com.df.distribute=true
-        - com.df.serviceDomain=api.cnblogs.com
-        - com.df.port=80
     networks:
       - arcms
     ports:
       - 8090:8090
   portal:
-    image: registry.cn-hangzhou.aliyuncs.com/mengstars/portal:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/portal
     deploy:
       replicas: 1
       update_config:
         delay: 5s
-      labels:
-        - com.df.notify=true
-        - com.df.distribute=true
-        - com.df.serviceDomain=api.cnblogs.com
-        - com.df.port=80
     networks:
       - arcms
     ports:
