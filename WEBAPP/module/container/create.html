@@ -309,16 +309,16 @@
 <div id="ContainerApp" class="uk-grid">
     <div class="uk-width-6-6">
         <div class="uk-panel"></div>
-        <h3 class="uk-text-middle"><span class="icon uk-icon-desktop"></span> Create a new container</h3>
+        <h3 class="uk-text-middle"><span class="icon uk-icon-desktop"></span>创建容器</h3>
         <div class="uk-form">
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tr>
-                    <td class="dialogField uk-width-1-10">Name:</td>
+                    <td class="dialogField uk-width-1-10">名字:</td>
                     <td><input class="uk-form-width-large" type="text"
                                placeholder="e.g. myContainer" v-model="createParams.name"/></td>
                 </tr>
                 <tr>
-                    <td class="dialogField">Image:</td>
+                    <td class="dialogField">镜像:</td>
                     <td>
                         <select class="uk-form-width-large" v-model="createParams.image" autocomplete="off">
                             <option v-for="(repoTag,index) in imageRepoTags"
@@ -329,7 +329,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="dialogField">Privileged:</td>
+                    <td class="dialogField">Root权限:</td>
                     <td>
                         <c-switch bind="createParams.privileged" :switch='{"ON":true,"OFF":false}'
                                   theme="uk-button-primary uk-button-small"></c-switch>
@@ -338,58 +338,58 @@
             </table>
             <hr>
             <ul class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
-                <li><a href="#"><span class="icon uk-icon-list-alt"></span>Runtime</a></li>
-                <li><a href="#"><span class="uk-icon-database"></span> Resource</a></li>
-                <li><a href="#"><span class="uk-icon-sitemap"></span> Expose port</a></li>
-                <li><a href="#"><span class="icon uk-icon-clone"></span>Mount</a></li>
-                <li><a href="#"><span class="icon uk-icon-link"></span>Link</a></li>
-                <li><a href="#"><span class="icon uk-icon-refresh"></span>Restart Policy</a></li>
+                <li><a href="#"><span class="icon uk-icon-list-alt"></span>运行参数</a></li>
+                <li><a href="#"><span class="uk-icon-database"></span>资源分配</a></li>
+                <li><a href="#"><span class="uk-icon-sitemap"></span>端口</a></li>
+                <li><a href="#"><span class="icon uk-icon-clone"></span>挂载</a></li>
+                <li><a href="#"><span class="icon uk-icon-link"></span>网络</a></li>
+                <li><a href="#"><span class="icon uk-icon-refresh"></span>重启</a></li>
             </ul>
             <ul id="tab-content" class="uk-switcher">
                 <!-- Runtime -->
                 <li class="uk-active" >
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <tr>
-                            <td class="dialogField uk-width-1-10 ">User:</td>
+                            <td class="dialogField uk-width-1-10 ">用户:</td>
                             <td><input class="uk-form-width-large"
                                        placeholder="e.g. nginx" v-model="createParams.user"/></td>
                         </tr>
                         <tr>
-                            <td class="dialogField">WorkDir:</td>
+                            <td class="dialogField">工作目录:</td>
                             <td><input class="uk-form-width-large"
                                        placeholder="e.g. /myapp" v-model="createParams.workDir"/></td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Command:</td>
+                            <td class="dialogField">启动命令:</td>
                             <td><input class="uk-form-width-large" type="text"
                                        placeholder="e.g. /usr/bin/nginx -t -c /mynginx.conf" v-model="createParams.command"/></td>
                         </tr>
                         <tr v-if="createParams.entrypoint!=''">
-                            <td class="dialogField">Entry point:</td>
+                            <td class="dialogField">进入点:</td>
                             <td><span class="uk-text-bold uk-text-primary">{{createParams.entrypoint}}</span></td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Tty:</td>
+                            <td class="dialogField">TTY模式:</td>
                             <td>
                                 <c-switch bind="createParams.tty" :switch='{"ON":true,"OFF":false}'
                                           theme="uk-button-success uk-button-small"></c-switch>
                             </td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Interactive:</td>
+                            <td class="dialogField">交互模式:</td>
                             <td>
                                 <c-switch bind="createParams.openStdin" :switch='{"ON":true,"OFF":false}'
                                           theme="uk-button-success uk-button-small"></c-switch>
                             </td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Env:</td>
+                            <td class="dialogField">环境变量:</td>
                             <td>
                                 <div class="uk-panel  uk-width-10-10">
                                     <ul class="uk-list uk-list-line ">
                                         <li>
                                             <button class="uk-button uk-button-primary uk-button-small" @click="createParams.env.add()">
-                                                <i class="uk-icon-plus-square"></i> Add Env</button>
+                                                <i class="uk-icon-plus-square"></i>添加变量</button>
                                         </li>
                                         <li v-for="(env,index) in createParams.env.envs">
                                             <div class="uk-grid">
@@ -420,17 +420,17 @@
                 <li>
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <tr>
-                            <td class="dialogField uk-width-1-10">CPU:</td>
+                            <td class="dialogField uk-width-1-10">处理器:</td>
                             <td><input type="number" class="uk-form-width-small uk-text-center"
                                        placeholder="cpu core count" v-model="createParams.cpu"/></td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Memory:</td>
+                            <td class="dialogField">内存:</td>
                             <td><input type="number" class="uk-form-width-small uk-text-center"
                                        placeholder="memory size (Mb)" v-model="createParams.memory"/></td>
                         </tr>
                         <tr>
-                            <td class="dialogField">Network:</td>
+                            <td class="dialogField">网络:</td>
                             <td>
                                 <c-switch bind="createParams.networkDisable" :switch='{"ON":false,"OFF":true}'
                                           theme="uk-button-primary uk-button-small"></c-switch>
@@ -457,7 +457,7 @@
                                     <ul class="uk-list uk-list-line ">
                                         <li>
                                             <button class="uk-button uk-button-primary uk-button-small" @click="createParams.port.add()">
-                                                <i class="uk-icon-plus-square"></i> Add export port</button>
+                                                <i class="uk-icon-plus-square"></i>添加端口</button>
                                         </li>
                                         <li v-for="(port,index) in createParams.port.ports">
                                             <div class="uk-grid">
@@ -497,7 +497,7 @@
                                     <ul class="uk-list uk-list-line ">
                                         <li>
                                             <button class="uk-button uk-button-primary uk-button-small" @click="createParams.volume.add()">
-                                                <i class="uk-icon-plus-square"></i> Add mount</button>
+                                                <i class="uk-icon-plus-square"></i>添加挂载</button>
                                         </li>
                                         <li v-for="(volume,index) in createParams.volume.volumes">
                                             <div class="uk-grid">
@@ -549,7 +549,7 @@
                                     <ul class="uk-list uk-list-line ">
                                         <li>
                                             <button class="uk-button uk-button-primary uk-button-small" @click="createParams.link.add()">
-                                                <i class="uk-icon-plus-square"></i> Add link</button>
+                                                <i class="uk-icon-plus-square"></i>连接网络</button>
                                         </li>
                                         <li v-for="(link,index) in createParams.link.links">
                                             <div class="uk-grid">
@@ -582,15 +582,15 @@
                 <li>
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <tr>
-                            <td class="uk-width-1-10 dialogField">Policy: </td>
+                            <td class="uk-width-1-10 dialogField">策略: </td>
                             <td>
                                     <c-switch bind="createParams.restartPolicy.name"
-                                              :switch='{"No":"no","Always":"always","UnlessStopped":"unless-stopped","OnFailure":"on-failure"}'
+                                              :switch='{"不重启":"no","总是重启":"always","意外停止":"unless-stopped","出现异常":"on-failure"}'
                                               theme="uk-button-primary uk-button-small"></c-switch>
                             </td>
                         </tr>
                         <tr v-if="createParams.restartPolicy.name=='on-failure'">
-                            <td class="dialogField">Retry count: </td>
+                            <td class="dialogField">重试次数: </td>
                             <td>
                                 <input type="number" class="uk-form-width-small"
                                        v-model="createParams.restartPolicy.maximumRetryCount" />
@@ -602,7 +602,7 @@
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tr>
                     <td class="dialogField" colspan="2">
-                        <a href="#"  class="uk-button uk-button-primary" @click="create()">Create</a>
+                        <a href="#"  class="uk-button uk-button-primary" @click="create()">创建</a>
                     </td>
                 </tr>
             </table>

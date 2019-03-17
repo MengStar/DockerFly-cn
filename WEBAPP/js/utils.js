@@ -74,7 +74,7 @@
             '</div>',
             '<p>'+content+'</p>',
             '<div class="uk-modal-footer uk-text-right">',
-            '    <button type="button" class="uk-button uk-button-primary uk-modal-close">Close</button>',
+            '    <button type="button" class="uk-button uk-button-primary uk-modal-close">关闭</button>',
             '</div>'
         ]).join(""), options);
 

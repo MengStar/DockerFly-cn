@@ -96,17 +96,17 @@
                             var cmdContainerStart = new CmdContainerStart(container.id);
                             connect(cmdContainerStart);
 
-                            var blockDialog = openBlockDialog("Starting Container...");
+                            var blockDialog = openBlockDialog("启动容器...");
                             cmdContainerStart.send(function(msg){
                                 blockDialog.hide();
-                                alert("<span class='uk-text-large uk-text-primary'>Container <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> started.</span>")
+                                alert("<span class='uk-text-large uk-text-primary'>容器 <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> 已启动.</span>")
                                 cmdContainerStart.close();
                                 cmdContainerStart.release();
                                 containerListVue.query();
                             }, function(status, errMsg){
                                 blockDialog.hide();
                                 var errorObj = eval("errorObj="+errMsg)
-                                alertError("Kill container "+delFirestChar(container.names[0])+" failed <br/>"+errorObj.errMsg);
+                                alertError("启动容器 "+delFirestChar(container.names[0])+" 失败 <br/>"+errorObj.errMsg);
                                 cmdContainerStart.close();
                                 cmdContainerStart.release();
                             });
@@ -124,16 +124,16 @@
                         connect(cmdContainerStop);
                         cmdContainerStop.waitForKill(30);
 
-                        var blockDialog = openBlockDialog("Stoping Container...");
+                        var blockDialog = openBlockDialog("停止容器...");
                         cmdContainerStop.send(function(msg){
                             blockDialog.hide();
-                            alert("<span class='uk-text-large uk-text-primary'>Container <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> stoped.</span>")
+                            alert("<span class='uk-text-large uk-text-primary'>容器 <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> 已停止.</span>")
                             cmdContainerStop.close();
                             cmdContainerStop.release();
                             containerListVue.query();
                         }, function(status, errMsg){
                             blockDialog.hide();
-                            alertError("Stop container "+delFirestChar(container.names[0])+" failed, Docker still try to stoping this container, you can wait a moment and then refresh this page or try to Kill this container ");
+                            alertError("停止容器"+delFirestChar(container.names[0])+" 失败, 请稍等或使用杀死容器 ");
                             cmdContainerStop.close();
                             cmdContainerStop.release();
                             containerListVue.query();
@@ -148,17 +148,17 @@
                         var cmdContainerKill = new CmdContainerKill(container.id);
                         connect(cmdContainerKill);
 
-                        var blockDialog = openBlockDialog("Killing Container...");
+                        var blockDialog = openBlockDialog("杀死容器...");
                         cmdContainerKill.send(function(msg){
                             blockDialog.hide();
-                            alert("<span class='uk-text-large uk-text-primary'>Container <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> killed.</span>")
+                            alert("<span class='uk-text-large uk-text-primary'>容易 <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span>已杀死.</span>")
                             cmdContainerKill.close();
                             cmdContainerKill.release();
                             containerListVue.query();
                         }, function(status, errMsg){
                             blockDialog.hide();
                             var errorObj = eval("errorObj="+errMsg)
-                            alertError("Kill container "+delFirestChar(container.names[0])+" failed <br/>"+errorObj.errMsg);
+                            alertError("杀死容器 "+delFirestChar(container.names[0])+" 失败 <br/>"+errorObj.errMsg);
                             cmdContainerKill.close();
                             cmdContainerKill.release();
                         });
@@ -173,23 +173,23 @@
                         name = container.names[0]
                         id = container.id
 
-                        UIkit.modal.confirm("<span class='uk-text-large uk-text-danger'>Are you sure to remove ?</span><hr/> " +
+                        UIkit.modal.confirm("<span class='uk-text-large uk-text-danger'>确定删除容器吗?</span><hr/> " +
                             "<span class='uk-text-large uk-text-primary'> " + delFirestChar(name) + " </span> ", function () {
                             try {
                                 var cmdContainerRemove = new CmdContainerRemove(id);
                                 connect(cmdContainerRemove);
 
-                                var blockDialog = openBlockDialog("Remove Container...");
+                                var blockDialog = openBlockDialog("删除容器...");
                                 cmdContainerRemove.send(function(msg){
                                     blockDialog.hide();
-                                    alert("<span class='uk-text-large uk-text-primary'>Container <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> removed.</span>")
+                                    alert("<span class='uk-text-large uk-text-primary'>容器 <span class='uk-text-large uk-text-danger'>"+delFirestChar(container.names[0])+"</span> 已删除.</span>")
                                     cmdContainerRemove.close();
                                     cmdContainerRemove.release();
                                     containerListVue.query();
                                 }, function(status, errMsg){
                                     blockDialog.hide();
                                     var errorObj = eval("errorObj="+errMsg)
-                                    alertError("Remove container "+delFirestChar(container.names[0])+" failed <br/>"+errorObj.errMsg);
+                                    alertError("删除容器 "+delFirestChar(container.names[0])+" 失败 <br/>"+errorObj.errMsg);
                                     cmdContainerRemove.close();
                                     cmdContainerRemove.release();
                                 });
@@ -230,7 +230,7 @@
                     }
                     selector = selector + '</select></span>';
                     try {
-                        UIkit.modal.confirm("<span class='uk-text-large uk-text-primary uk-text-bold'>Choice which network to connect ?&nbsp;&nbsp;</span><hr/>"+
+                        UIkit.modal.confirm("<span class='uk-text-large uk-text-primary uk-text-bold'>选择要连接的网络 ?&nbsp;&nbsp;</span><hr/>"+
                             selector, function () {
                             try {
                                 var cmdNetworkConnect = new CmdNetworkConnect($('#networkToConnect').val());
@@ -262,7 +262,7 @@
                     }
                     selector = selector + '</select></span>';
                     try {
-                        UIkit.modal.confirm("<span class='uk-text-large uk-text-danger uk-text-bold'>Choice which network to disconnect  &nbsp;&nbsp;</span><hr/>"+
+                        UIkit.modal.confirm("<span class='uk-text-large uk-text-danger uk-text-bold'>选择要断开的网络  &nbsp;&nbsp;</span><hr/>"+
                             selector, function () {
                             try {
                                 var cmdNetworkDisConnect = new CmdNetworkDisConnect($('#networkToDisconnect').val());
@@ -309,17 +309,17 @@
                         cmdContainerCommit.pause(this.commitParams.pause);
                         connect(cmdContainerCommit);
 
-                        var blockDialog = openBlockDialog("Commit Container...");
+                        var blockDialog = openBlockDialog("正在生成镜像...");
                         cmdContainerCommit.send(function(msg){
                             blockDialog.hide();
-                            alert("<span class='uk-text-large uk-text-primary'>Container commited success.</span>")
+                            alert("<span class='uk-text-large uk-text-primary'>生成镜像成功</span>")
                             cmdContainerCommit.close();
                             cmdContainerCommit.release();
                             closeDialog("commitDialog");
                         }, function(status, errMsg){
                             blockDialog.hide();
                             var errorObj = eval("errorObj="+errMsg)
-                            alertError("Commit container "+delFirestChar(container.names[0])+" failed <br/>"+errorObj.errMsg);
+                            alertError("生成镜像 "+delFirestChar(container.names[0])+" 失败 <br/>"+errorObj.errMsg);
                             cmdContainerCommit.close();
                             cmdContainerCommit.release();
                             closeDialog("commitDialog");
@@ -331,7 +331,7 @@
                 },
 
                 rename: function(container){
-                    UIkit.modal.prompt("<span class='uk-text-large uk-text-primary uk-text-bold'>Replicas:</span>", delFirestChar(container.names[0]), function(newvalue){
+                    UIkit.modal.prompt("<span class='uk-text-large uk-text-primary uk-text-bold'>新的名字:</span>", delFirestChar(container.names[0]), function(newvalue){
                         try {
                             var cmdContainerRename = new CmdContainerRename(container.id);
                             connect(cmdContainerRename);
@@ -364,7 +364,7 @@
         <div class="uk-grid uk-margin">
             <div class="uk-width-1-2">
                 <h3 class="uk-text-middle">
-                    <span class="icon uk-icon-desktop"></span> Container manager
+                    <span class="icon uk-icon-desktop"></span> 容器管理
                 </h3>
             </div>
             <div class="uk-width-1-2 uk-text-right">
@@ -374,13 +374,13 @@
         <div id="query" class="uk-panel uk-panel-box uk-text-bold">
             <div class="uk-grid">
                 <div class="uk-width-5-6 uk-form">
-                    <span class="mr5">Id:</span>
+                    <span class="mr5">编号:</span>
                     <input class="uk-form-width-medium"
-                           type="text" placeholder="container  id" v-model="queryParams.id">
-                    <span class="mr5">Name:</span>
+                           type="text" placeholder="容器编号" v-model="queryParams.id">
+                    <span class="mr5">名字:</span>
                     <input class="uk-form-width-medium"
-                           type="text" placeholder="container name" v-model="queryParams.name">
-                    <span class="mr5">Status:</span>
+                           type="text" placeholder="容器名字" v-model="queryParams.name">
+                    <span class="mr5">状态:</span>
                     <select v-model="queryParams.status">
                         <option value="All">All</option>
                         <option value="created">created</option>
@@ -400,13 +400,13 @@
         <table id="containerList" class="uk-table uk-overflow-container uk-panel-box" style="table-layout: fixed; word-wrap: break-word">
             <thead>
             <tr>
-                <th class="uk-text-center table_colume_index">NO.</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Network & IP</th>
-                <th>Export Port</th>
-                <th class="uk-text-center">Status</th>
-                <th class="uk-text-center">Operation</th>
+                <th class="uk-text-center table_colume_index">序号</th>
+                <th>名字</th>
+                <th>镜像</th>
+                <th>网络</th>
+                <th>端口</th>
+                <th class="uk-text-center">状态</th>
+                <th class="uk-text-center">操作</th>
             </tr>
             </thead>
 
@@ -450,7 +450,7 @@
                 <td class="uk-text-center uk-text-middle">
                     <div class="uk-button-group">
                         <a :href="'viewer.html?id='+container.id" class="uk-button uk-button-primary uk-button-small">
-                            <span class="uk-icon-list-alt"></span> View
+                            <span class="uk-icon-list-alt"></span> 详情
                         </a>
                         <div data-uk-dropdown="{mode:'click'}">
                             <!-- 触发下拉菜单的按钮 -->
@@ -461,32 +461,32 @@
                                 <ul class="uk-nav uk-nav-dropdown uk-text-left">
                                     <li v-if="container.state!='running' || container.state=='paused'">
                                         <a href="#" class=" uk-text-primary"
-                                           @click="start(container)"><span class="uk-icon-play"></span> Start</a></li>
+                                           @click="start(container)"><span class="uk-icon-play"></span> 启动</a></li>
                                     <li v-if="container.state=='running'">
                                         <a href="#" class=" uk-text-warning"
-                                           @click="stop(container)"><span class="uk-icon-stop"></span> Stop</a></li>
+                                           @click="stop(container)"><span class="uk-icon-stop"></span> 停止</a></li>
                                     <li v-if="container.state=='running'">
                                         <a href="#" class=" uk-text-danger"
-                                           @click="kill(container)"><span class="uk-icon-flash"></span>  Kill</a></li>
+                                           @click="kill(container)"><span class="uk-icon-flash"></span>  杀死</a></li>
                                     <li v-if="container.state=='running'">
                                         <a href="#" class=" uk-text-success"
-                                           @click="pause(container)"><span class="uk-icon-pause"></span> Pause</a></li>
+                                           @click="pause(container)"><span class="uk-icon-pause"></span> 暂停</a></li>
                                     <li><a href="#" @click="remove(container)"
-                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> Remove</a></li>
+                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> 删除</a></li>
                                     <li class="uk-nav-divider" v-if="container.state=='running'"></li>
                                     <li v-if="container.state=='running'">
                                         <a href="#" class=" uk-text-primary"
-                                           @click="connect(container)"><span class="uk-icon-link"></span> Connect</a></li>
+                                           @click="connect(container)"><span class="uk-icon-link"></span> 连接网络</a></li>
                                     <li v-if="container.state=='running'">
                                         <a href="#" class=" uk-text-warning"
-                                           @click="disconnect(container)"><span class="uk-icon-chain-broken"></span> Disconnect</a></li>
+                                           @click="disconnect(container)"><span class="uk-icon-chain-broken"></span> 离开网络</a></li>
                                     <li class="uk-nav-divider"></li>
                                     <li>
                                         <a href="#" class=" uk-text-success"
-                                           @click="rename(container)"><span class="uk-icon-edit"></span> Rename</a></li>
+                                           @click="rename(container)"><span class="uk-icon-edit"></span> 重命名</a></li>
                                     <li>
                                         <a href="#" class=" uk-text-primary"
-                                           @click="openCommitDialog(container)"><span class="uk-icon-tag"></span> Commit</a></li>
+                                           @click="openCommitDialog(container)"><span class="uk-icon-tag"></span> 生成镜像</a></li>
                                 </ul>
                             </div>
 
@@ -500,33 +500,33 @@
     <div id="commitDialog" class="uk-modal">
         <div class="uk-modal-dialog uk-overflow-container">
             <a href="#" class="uk-modal-close uk-close uk-close-alt"></a>
-            <div class="uk-modal-header"><h2 class="uk-text-success">Commit container </h2></div>
+            <div class="uk-modal-header"><h2 class="uk-text-success">生成镜像</h2></div>
             <div class="uk-form">
                 <table class="uk-table uk-overflow-container uk-panel-box">
                     <tr>
-                        <td class="dialogField"> Tag:</td>
+                        <td class="dialogField">标签:</td>
                         <td><input class="uk-form-width-medium" type="text"
-                                   placeholder="e.g. dockerfly:latest" v-model="commitParams.tag"/></td>
+                                   placeholder="registry.cn-hangzhou.aliyuncs.com/mengstar/XXXX:latest" v-model="commitParams.tag"/></td>
                     </tr>
                     <tr>
-                        <td class="dialogField">Pause:</td>
+                        <td class="dialogField">暂停:</td>
                         <td><c-switch :bind="'commitParams.pause'"
                                       :switch='{"ON":true,"OFF":false}'
                                       theme="uk-button-success uk-button-small"></c-switch></td>
                     </tr>
                     <tr>
-                        <td class="dialogField">Author:</td>
+                        <td class="dialogField">作者:</td>
                         <td><input class="uk-form-width-medium" type="text"
-                                   placeholder="e.g. voovan" v-model="commitParams.author"/></td>
+                                   placeholder="刘星" v-model="commitParams.author"/></td>
                     </tr>
                     <tr>
-                        <td class="dialogField">Comment:</td>
-                        <td><textarea style="width:300px;height: 80px" placeholder="e.g. something to introduce"
+                        <td class="dialogField">说明:</td>
+                        <td><textarea style="width:300px;height: 80px" placeholder="镜像的简要介绍"
                                       v-model="commitParams.comment"></textarea></td>
                     </tr>
                     <tr>
                         <td class="dialogField" colspan="2">
-                            <a class="uk-button uk-button-primary" @click="commit()">Commit</a>
+                            <a class="uk-button uk-button-primary" @click="commit()">提交</a>
                         </td>
                     </tr>
                 </table>
