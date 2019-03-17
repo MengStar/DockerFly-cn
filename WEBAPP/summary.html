@@ -39,43 +39,43 @@
         <div class="uk-panel"></div>
         <h3></h3>
         <div>
-            <h3 class="uk-text-middle"><span class="icon uk-icon-dashboard"></span> Summery</h3>
+            <h3 class="uk-text-middle"><span class="icon uk-icon-dashboard"></span>总览</h3>
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tr>
                     <td colspan="4">
                         <div class="uk-grid uk-text-center">
-                            <div class="uk-width-1-4 uk-container">
-                                <div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"
-                                     style="background-color: #337ab7;">
-                                    <div class="uk-vertical-align-middle">
-                                        <div class="uk-text-large uk-text-bold">CPU</div>
-                                        <div>{{dockerInfo.nCPU}} core</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-width-1-4 uk-container">
-                                <div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"
-                                     style="background-color: #a1b700; ">
-                                    <div class="uk-vertical-align-middle">
-                                        <div class="uk-text-large uk-text-bold">Memory</div>
-                                        <div>{{Math.ceil(dockerInfo.memTotal/1000/1024)}} Mb</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-width-1-4 uk-container">
+                            <!--<div class="uk-width-1-4 uk-container">-->
+                                <!--<div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"-->
+                                     <!--style="background-color: #337ab7;">-->
+                                    <!--<div class="uk-vertical-align-middle">-->
+                                        <!--<div class="uk-text-large uk-text-bold">处理器</div>-->
+                                        <!--<div>{{dockerInfo.nCPU}} 核</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="uk-width-1-4 uk-container">-->
+                                <!--<div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"-->
+                                     <!--style="background-color: #a1b700; ">-->
+                                    <!--<div class="uk-vertical-align-middle">-->
+                                        <!--<div class="uk-text-large uk-text-bold">内存</div>-->
+                                        <!--<div>{{Math.ceil(dockerInfo.memTotal/1000/1024)}} Mb</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="uk-width-1-2 uk-container">
                                 <div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"
                                      style="background-color: #b73200; ">
                                     <div class="uk-vertical-align-middle">
-                                        <div class="uk-text-large uk-text-bold">Container</div>
+                                        <div class="uk-text-large uk-text-bold">容器数</div>
                                         <div>{{dockerInfo.containers}}</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="uk-width-1-4 uk-container">
+                            <div class="uk-width-1-2 uk-container">
                                 <div class="uk-border-circle uk-container-center summery_badge uk-vertical-align"
                                      style="background-color: #00b784; ">
                                     <div class="uk-vertical-align-middle">
-                                        <div class="uk-text-large uk-text-bold">Images</div>
+                                        <div class="uk-text-large uk-text-bold">镜像数</div>
                                         <div>{{imageList.length}}</div>
                                     </div>
                                 </div>
@@ -84,17 +84,17 @@
                     </td>
                 </tr>
             </table>
-            <h3 class="uk-text-middle"><span class="icon uk-icon-codepen"></span> Host info</h3>
+            <h3 class="uk-text-middle"><span class="icon uk-icon-codepen"></span>系统信息</h3>
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tbody>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">ID:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">编号:</td>
                     <td class="uk-width-9-10 uk-text-bold uk-text-primary uk-text-small" colspan="3">
                         {{dockerInfo.id}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">OS:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">系统:</td>
                     <td class="uk-width-9-10 uk-text-muted" colspan="3">
                         {{dockerInfo.osType}}({{dockerInfo.architecture}})_{{dockerInfo.operatingSystem}}({{dockerInfo.kernelVersion}})
                     </td>
@@ -109,46 +109,46 @@
                 -->
                 </tbody>
             </table>
-            <h3 class="uk-text-middle"><span class="icon uk-icon-info-circle"></span> Docker info</h3>
+            <h3 class="uk-text-middle"><span class="icon uk-icon-info-circle"></span> Docker信息</h3>
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tbody>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Container:</td>
-                    <td class="uk-width-1-4"><span class="uk-text-bold">Total: {{dockerInfo.containers}}</span> /
-                        <span class="uk-text-primary uk-text-bold">Running: {{dockerInfo.containersRunning}}</span> /
-                        <span class="uk-text-success uk-text-bold">Paused: {{dockerInfo.containersPaused}} </span> /
-                        <span class="uk-text-danger uk-text-bold"> Stoped: {{dockerInfo.containersStopped}} </span>
+                    <td class="uk-width-1-10 uk-text-right summeryField">容器:</td>
+                    <td class="uk-width-1-4"><span class="uk-text-bold">总量: {{dockerInfo.containers}}</span> /
+                        <span class="uk-text-primary uk-text-bold">运行: {{dockerInfo.containersRunning}}</span> /
+                        <span class="uk-text-success uk-text-bold">暂停: {{dockerInfo.containersPaused}} </span> /
+                        <span class="uk-text-danger uk-text-bold"> 停止: {{dockerInfo.containersStopped}} </span>
                     </td>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Images:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">镜像:</td>
                     <td class="uk-width-1-4 ">{{imageList.length}}</td>
                 </tr>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Docker home:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">目录:</td>
                     <td class="uk-width-1-4">{{dockerInfo.dockerRootDir}}</td>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Docker version:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">版本:</td>
                     <td class="uk-width-1-4">{{dockerInfo.serverVersion}}</td>
                 </tr>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">DockerHub mirror:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">远程仓库:</td>
                     <td class="uk-width-1-4" colspan="3">
-                        <code v-for="mirror in dockerInfo.registryConfig.mirrors">{{mirror}}</code>
+                        <code v-for="mirror in dockerInfo.registryConfig.mirrors">registry.cn-hangzhou.aliyuncs.com/mengstars</code>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <h3 class="uk-text-middle"><span class="icon uk-icon-mixcloud"></span> Cluster info</h3>
+            <h3 class="uk-text-middle"><span class="icon uk-icon-mixcloud"></span>Swarm信息</h3>
             <table class="uk-table uk-overflow-container uk-panel-box">
                 <tbody>
                 <tr>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Node id:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">节点id:</td>
                     <td class="uk-width-1-4">{{dockerInfo.swarm.nodeId}}</td>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Node addr:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">节点地址:</td>
                     <td class="uk-width-1-4">{{dockerInfo.swarm.nodeAddr}}</td>
                 </tr>
                 <tr v-for="(remoteManager,index) in dockerInfo.swarm.remoteManagers">
-                    <td class="uk-width-1-10 uk-text-right summeryField">Manager id:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">管理节点id:</td>
                     <td class="uk-width-1-4">{{remoteManager.nodeId}}</td>
-                    <td class="uk-width-1-10 uk-text-right summeryField">Manager addr:</td>
+                    <td class="uk-width-1-10 uk-text-right summeryField">管理节点地址:</td>
                     <td class="uk-width-1-4">{{remoteManager.addr}}</td>
                 </tr>
                 </tbody>
