@@ -72,46 +72,47 @@
                         if(this.logInfo.terminal==null){
                             this.logInfo.terminal = terminal("logPanel")
                         }
+                        this.logInfo.terminal.write("容器日志：" + "\r\n");
+                        //
+                        // var cmdContainerLogs = new CmdContainerLogs(this.viewContainer.id);
+                        // cmdContainerLogs.connect1(60);
+                        // cmdContainerLogs.tail(this.logInfo.lineCount);
+                        //
+                        // var logData = cmdContainerLogs.send().split("\u000a");
+                        // console.log(logData);
+                        // for(var logIndex in logData){
+                        //     var logLine = logData[logIndex];
+                        //     if(!(logLine instanceof Function) && logIndex != logData.length-1) {
+                        //         this.logInfo.terminal.write(logLine + "\r\n");
+                        //     }
+                        // }
 
-                        var cmdContainerLogs = new CmdContainerLogs(this.viewContainer.id);
-                        cmdContainerLogs.connect1(60);
-                        cmdContainerLogs.tail(this.logInfo.lineCount);
-
-                        var logData = cmdContainerLogs.send().split("\u000a");
-                        console.log(logData);
-                        for(var logIndex in logData){
-                            var logLine = logData[logIndex];
-                            if(!(logLine instanceof Function) && logIndex != logData.length-1) {
-                                this.logInfo.terminal.write(logLine + "\r\n");
-                            }
-                        }
-
-                        var cmdContainerAttach = new CmdContainerAttach(this.viewContainer.id);
-                        this.logInfo.cmdObject = cmdContainerAttach;
-                        cmdContainerAttach.stream(true);
-                        cmdContainerAttach.stdout(true);
-                        cmdContainerAttach.connect();
-                        cmdContainerAttach.send();
+                        // var cmdContainerAttach = new CmdContainerAttach(this.viewContainer.id);
+                        // this.logInfo.cmdObject = cmdContainerAttach;
+                        // cmdContainerAttach.stream(true);
+                        // cmdContainerAttach.stdout(true);
+                        // cmdContainerAttach.connect();
+                        // cmdContainerAttach.send();
 
                         //循环输出日志
-                        this.logInfo.loop = setInterval(
-                            function() {
-                                try {
-                                    var logData = cmdContainerAttach.loadStream();
-                                    if (logData != null) {
-                                        logData = logData.replaceAll("\r", "")
-                                        logData = logData.replaceAll("\n", "\u0000")
-                                        logData = logData.replaceAll("\u0000", "\r\n");
-                                        containerViewerVue.logInfo.terminal.write(logData);
-                                    } else {
-                                        containerViewerVue.logStop();
-                                    }
-                                }catch(e){
-                                    containerViewerVue.logStop();
-                                    alertError(e)
-                                }
-                            }, this.logInfo.interval
-                        );
+                        // this.logInfo.loop = setInterval(
+                        //     function() {
+                        //         try {
+                        //             var logData = cmdContainerAttach.loadStream();
+                        //             if (logData != null) {
+                        //                 logData = logData.replaceAll("\r", "")
+                        //                 logData = logData.replaceAll("\n", "\u0000")
+                        //                 logData = logData.replaceAll("\u0000", "\r\n");
+                        //                 containerViewerVue.logInfo.terminal.write(logData);
+                        //             } else {
+                        //                 containerViewerVue.logStop();
+                        //             }
+                        //         }catch(e){
+                        //             containerViewerVue.logStop();
+                        //             alertError(e)
+                        //         }
+                        //     }, this.logInfo.interval
+                        // );
                     } catch (e) {
                         alertError(e);
                     }
@@ -268,36 +269,37 @@
         </h3>
 
         <ul class="uk-tab" data-uk-switcher="{connect:'#Viewers'}">
-            <li><a href="#"><span class="uk-icon-sliders"></span> Summery</a></li>
-            <li><a href="#"><span class="uk-icon-sliders"></span> Resource</a></li>
-            <li><a href="#"><span class="uk-icon-line-chart"></span> Status</a></li>
-            <li><a href="#"><span class="uk-icon-terminal"></span> Console</a></li>
-            <li><a href="#"><span class="uk-icon-file-code-o"></span> Log</a></li>
+            <li><a href="#"><span class="uk-icon-sliders"></span> 总览</a></li>
+            <li><a href="#"><span class="uk-icon-sliders"></span> 资源</a></li>
+            <li><a href="#"><span class="uk-icon-line-chart"></span> 监控</a></li>
+            <!--<li><a href="#"><span class="uk-icon-terminal"></span> Console</a></li>-->
+            <li><a href="#"><span class="uk-icon-file-code-o"></span> 日志</a></li>
         </ul>
         <div id="Viewers" class="uk-switcher">
+            <!--总览信息-->
             <div>
                 <div>
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Container infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span>容器信息</div>
                             </div>
                         </caption>
                         <tbody>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">ID </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">编号</td>
                             <td class="uk-text-bold">{{viewContainer.id |shortString(12)}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Name </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">名字</td>
                             <td class="uk-text-primary">{{viewContainer.name | delFirestChar}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Image </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">镜像</td>
                             <td class="uk-text-success">{{viewContainer.image |shortString(12)}}</td>
                         </tr>
                         <tr v-if="viewContainer.config.workingDir!=''">
-                            <td class="uk-width-1-10 uk-text-right summeryField">WorkingDir </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">工作区</td>
                             <td>
                                 <span class="">
                                     {{viewContainer.config.workingDir}}
@@ -305,7 +307,7 @@
                             </td>
                         </tr>
                         <tr v-if="viewContainer.config.user!=''">
-                            <td class="uk-width-1-10 uk-text-right summeryField">User </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">用户</td>
                             <td>
                                 <span class="">
                                     {{viewContainer.config.User}}
@@ -313,7 +315,7 @@
                             </td>
                         </tr>
                         <tr v-if="viewContainer.config.cmd!=null">
-                            <td class="uk-width-1-10 uk-text-right summeryField">Command </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">启动命令</td>
                             <td><span class="uk-text-danger uk-text-bold">
                                 <span v-for="cmdItem in viewContainer.config.cmd">
                                     {{cmdItem}}
@@ -322,7 +324,7 @@
                             </td>
                         </tr>
                         <tr v-if="viewContainer.config.entrypoint!=null && viewContainer.config.entrypoint.length != 0">
-                            <td class="uk-width-1-10 uk-text-right summeryField">Entrypoint </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">初始命令</td>
                             <td><span class="uk-text-danger uk-text-bold">
                                 <span v-for="entrypointItem in viewContainer.config.entrypoint">
                                     {{entrypointItem+" "}}
@@ -331,7 +333,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Env </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">环境变量</td>
                             <td><span class="uk-text-warning">
                                 <div v-for="envItem in viewContainer.config.env">
                                     {{envItem}}
@@ -340,7 +342,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Created </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">创建时间</td>
                             <td class="">{{viewContainer.created|strToDate}}</td>
                         </tr>
                         </tbody>
@@ -353,21 +355,21 @@
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Resource infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span>基础信息</div>
                             </div>
                         </caption>
                         <tbody>
 
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">CPU </td>
-                            <td class="uk-text-primary">{{viewContainer.hostConfig.cpu==0?"unlimited":viewContainer.hostConfig.cpu}}</td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">处理器 </td>
+                            <td class="uk-text-primary">{{viewContainer.hostConfig.cpu==0?"未指定":viewContainer.hostConfig.cpu}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Memory </td>
-                            <td class="uk-text-primary">{{viewContainer.hostConfig.memory==0?"unlimited":viewContainer.hostConfig.memory/1024/1024+"MB"}}</td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">内存 </td>
+                            <td class="uk-text-primary">{{viewContainer.hostConfig.memory==0?"未设置":viewContainer.hostConfig.memory/1024/1024+"MB"}}</td>
                         </tr>
                         <tr v-if="JSON.stringify(viewContainer.hostConfig.portBindings) != '{}'">
-                            <td class="uk-width-1-10 uk-text-right summeryField">Export port </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">端口 </td>
                             <td class="uk-text-middle">
                                 <div v-for="(guest,host) in viewContainer.hostConfig.portBindings">
                                     <h4 class="uk-margin-bottom-remove">
@@ -385,15 +387,15 @@
                            v-if="JSON.stringify(viewContainer.networkSettings.networks) != '{}'">
                         <caption>
                             <div class="uk-grid" >
-                                <div class="uk-width-5-6"><span class="icon uk-icon-sitemap"></span> Network infomation</div>
+                                <div class="uk-width-5-6"><span class="icon uk-icon-sitemap"></span>网络信息</div>
                             </div>
                         </caption>
                         <thead class="uk-text-center">
-                        <th class="uk-width-2-10 uk-text-center">ID</th>
-                        <th class="uk-width-2-10 uk-text-center">Name</th>
-                        <th class="uk-width-2-10 uk-text-center">Gateway</th>
-                        <th class="uk-width-2-10 uk-text-center">IP Address</th>
-                        <th class="uk-width-2-10 uk-text-center">Mac Address</th>
+                        <th class="uk-width-2-10 uk-text-center">编号</th>
+                        <th class="uk-width-2-10 uk-text-center">名字</th>
+                        <th class="uk-width-2-10 uk-text-center">网关</th>
+                        <th class="uk-width-2-10 uk-text-center">IP地址</th>
+                        <th class="uk-width-2-10 uk-text-center">MAC地址</th>
                         </thead>
                         <tbody>
                         <tr class="uk-text-center" v-for=" (value, key) in viewContainer.networkSettings.networks">
@@ -412,14 +414,14 @@
                            v-if="viewContainer.mounts.length > 0">
                         <caption>
                             <div class="uk-grid" >
-                                <div class="uk-width-5-6"><span class="icon uk-icon-clone"></span> Mount infomation</div>
+                                <div class="uk-width-5-6"><span class="icon uk-icon-clone"></span>挂载信息</div>
                             </div>
                         </caption>
                         <thead class="uk-text-center">
-                        <th class="uk-width-1-10 uk-text-center">Type</th>
-                        <th class="uk-width-2-10 ">Source</th>
-                        <th class="uk-width-2-10 ">Destination</th>
-                        <th class="uk-width-1-10 uk-text-center">RW</th>
+                        <th class="uk-width-1-10 uk-text-center">类型</th>
+                        <th class="uk-width-2-10 ">源地址</th>
+                        <th class="uk-width-2-10 ">目的地址</th>
+                        <th class="uk-width-1-10 uk-text-center">可写</th>
                         </thead>
                         <tbody>
                         <tr v-for=" mount in viewContainer.mounts">
@@ -440,12 +442,12 @@
                            v-if="viewContainer.hostConfig.links != null">
                         <caption>
                             <div class="uk-grid" >
-                                <div class="uk-width-5-6"><span class="icon uk-icon-link"></span> Link infomation</div>
+                                <div class="uk-width-5-6"><span class="icon uk-icon-link"></span>连接信息</div>
                             </div>
                         </caption>
                         <thead class="uk-text-center">
-                        <th class="uk-width-1-2 uk-text-center">Container name</th>
-                        <th class="uk-width-1-2 uk-text-center">Linked name</th>
+                        <th class="uk-width-1-2 uk-text-center">容器名字</th>
+                        <th class="uk-width-1-2 uk-text-center">连接名字</th>
                         </tdead>
                         <tbody>
                         <tr v-for=" link in viewContainer.hostConfig.links">
@@ -458,23 +460,23 @@
                     </table>
                 </div>
             </div>
-            <!-- 进程信息 -->
+            <!-- 监控信息 -->
             <div>
                 <div>
                     <table class="uk-table uk-table-condensed uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-heartbeat"></span> Stats</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-heartbeat"></span> 状态</div>
                                 <div class="uk-width-1-6 uk-text-center">
-                                    <a class="uk-button uk-button-small uk-button-primary" @click="statsView">Refresh</a>
+                                    <a class="uk-button uk-button-small uk-button-primary" @click="statsView">刷新</a>
                                 </div>
                             </div>
                         </caption>
                         <thead>
-                        <th class="uk-width-1-4 uk-text-center">CPU</th>
-                        <th class="uk-width-1-4 uk-text-center">Memory (Usage/Limit)</th>
-                        <th class="uk-width-1-4 uk-text-center">IO (Read/Send/Total)</th>
-                        <th class="uk-width-1-4 uk-text-center">Net (Rx/Tx)</th>
+                        <th class="uk-width-1-4 uk-text-center">处理器</th>
+                        <th class="uk-width-1-4 uk-text-center">内存(Usage/Limit)</th>
+                        <th class="uk-width-1-4 uk-text-center">IO(Read/Send/Total)</th>
+                        <th class="uk-width-1-4 uk-text-center">网络(Rx/Tx)</th>
                         </tdead>
                         <tbody>
                         <tr v-if="stats!=null">
@@ -504,18 +506,18 @@
                     <table class="uk-table uk-table-condensed uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid" >
-                                <div class="uk-width-5-6"><span class="uk-icon-bars"></span> Container process</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-bars"></span>线程信息</div>
                                 <div class="uk-width-1-6 uk-text-center">
-                                    <a class="uk-button uk-button-small uk-button-primary" @click="processView">Refresh</a>
+                                    <a class="uk-button uk-button-small uk-button-primary" @click="processView">刷新</a>
                                 </div>
                             </div>
                         </caption>
                         <thead>
-                        <th class="table_colume_index uk-text-center">NO.</th>
+                        <th class="table_colume_index uk-text-center">编号</th>
                         <th class="uk-width-1-10">PID</th>
-                        <th class="uk-width-1-10">User</th>
-                        <th class="uk-width-1-10">Time</th>
-                        <th class="uk-width-6-10">Command</th>
+                        <th class="uk-width-1-10">用户</th>
+                        <th class="uk-width-1-10">时间</th>
+                        <th class="uk-width-6-10">命令</th>
                         </tdead>
                         <tbody>
                             <tr v-for="(proecess,index) in processes">
@@ -530,23 +532,23 @@
                 </div>
             </div>
             <!-- 执行命令  v-html="execInfo.data" class="terminal" style="height:400px; overflow-y: scroll;"-->
-            <div>
-                <div class="uk-grid uk-form">
-                    <div class="uk-width-4-6">
-                        <input class="uk-form-width-large uk-form-success" type="text"
-                               placeholder="Command will be execute in contianer" v-model="execInfo.cmd"/>
-                    </div>
-                    <div class="uk-width-2-6 uk-text-right">
-                        <a class="uk-button uk-button-small uk-button-primary"
-                           @click="execute" v-show="execInfo.loop==null">Run</a>
-                        <a class="uk-button uk-button-small uk-button-danger"
-                           @click="execStop" v-show="execInfo.loop!=null">Stop</a>
-                        <a class="uk-button uk-button-small uk-button-success" @click="execClear">Clear</a>
-                    </div>
-                </div>
-                <hr>
-                <div id="execPanel" class="terminal"></div>
-            </div>
+            <!--<div>-->
+                <!--<div class="uk-grid uk-form">-->
+                    <!--<div class="uk-width-4-6">-->
+                        <!--<input class="uk-form-width-large uk-form-success" type="text"-->
+                               <!--placeholder="Command will be execute in contianer" v-model="execInfo.cmd"/>-->
+                    <!--</div>-->
+                    <!--<div class="uk-width-2-6 uk-text-right">-->
+                        <!--<a class="uk-button uk-button-small uk-button-primary"-->
+                           <!--@click="execute" v-show="execInfo.loop==null">执行</a>-->
+                        <!--<a class="uk-button uk-button-small uk-button-danger"-->
+                           <!--@click="execStop" v-show="execInfo.loop!=null">停止</a>-->
+                        <!--<a class="uk-button uk-button-small uk-button-success" @click="execClear">清空</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--<div id="execPanel" class="terminal"></div>-->
+            <!--</div>-->
             <!-- 日志 v-html="logInfo.data" class="terminal"  style="height:400px; overflow-y: scroll;"-->
             <div>
                 <div class="uk-grid uk-form">
@@ -559,7 +561,7 @@
                         </code>
                     </div>
                     <div class="uk-width-2-6 uk-text-right">
-                        <span class="uk-text-bold">Number of lines:</span>
+                        <span class="uk-text-bold">行数:</span>
                         <select v-model="logInfo.lineCount">
                             <option vale="10">10</option>
                             <option vale="30">30</option>
@@ -572,10 +574,10 @@
                         </select>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a class="uk-button uk-button-small uk-button-primary"
-                           @click="logView" v-show="logInfo.loop==null">Fetch</a>
+                           @click="logView" v-show="logInfo.loop==null">获取</a>
                         <a class="uk-button uk-button-small uk-button-danger"
-                           @click="logStop" v-show="logInfo.loop!=null">Stop</a>
-                        <a class="uk-button uk-button-small uk-button-success" @click="logClear">Clear</a>
+                           @click="logStop" v-show="logInfo.loop!=null">停止</a>
+                        <a class="uk-button uk-button-small uk-button-success" @click="logClear">清除</a>
                     </div>
                 </div>
                 <hr>

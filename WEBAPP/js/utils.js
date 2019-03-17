@@ -108,7 +108,7 @@
 
     //展示错误信息
     function alertError(e){
-        var header = "<h3 class='uk-text-danger uk-text-bold'>Ops , The operation failure !</h3>";
+        var header = "<h3 class='uk-text-danger uk-text-bold'>抱歉，操作遇到了问题!</h3>";
         var errMsg = "<h3 style='margin: 0px 15px 0px 15px;word-wrap: break-word;word-break: normal;'>";
         if(e instanceof Error) {
             if(e.name == "Error") {
