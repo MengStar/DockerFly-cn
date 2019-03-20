@@ -8,3 +8,6 @@ docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sy
 
 
 docker run -d -p 3000:3000 -e INFLUXDB_HOST= 10.105.72.79  -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=cadvisor -e INFLUXDB_PASS=cadvisor --link influxsrv:influxsrv --name grafana grafana/grafana
+
+
+# docker stack deploy -c watch_deploy.yml watch

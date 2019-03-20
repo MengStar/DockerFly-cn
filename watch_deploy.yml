@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  influxsrv:
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/influxdb
+    deploy:
+      replicas: 1
+    networks:
+      - watch
+    ports:
+      - 8083:8083
+      - 8086:8086
+  cadvisor:
+    image:  registry.cn-hangzhou.aliyuncs.com/mengstars/cadvisor:latest
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+    command: -logtostderr -docker_only -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - watch
+    ports:
+      - 8081:8080
+networks:
+  watch:
+    driver: overlay
