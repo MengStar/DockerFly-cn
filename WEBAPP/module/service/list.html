@@ -164,7 +164,7 @@
         <div class="uk-grid uk-margin">
             <div class="uk-width-1-2">
                 <h3 class="uk-text-middle">
-                    <span class="icon uk-icon-gears"></span> Service manager
+                    <span class="icon uk-icon-gears"></span> 服务管理
                 </h3>
             </div>
             <div class="uk-width-1-2 uk-text-right">
@@ -174,12 +174,12 @@
         <div id="query" class="uk-panel uk-panel-box uk-text-bold">
             <div class="uk-grid">
                 <div class="uk-width-5-6 uk-form">
-                    <span class="mr5">Id:</span>
+                    <span class="mr5">编号:</span>
                     <input class="uk-form-width-medium"
-                           type="text" placeholder="service  id" v-model="queryParams.id">
-                    <span class="mr5">Name:</span>
+                           type="text" placeholder="服务编号" v-model="queryParams.id">
+                    <span class="mr5">名字:</span>
                     <input class="uk-form-width-medium"
-                           type="text" placeholder="service name" v-model="queryParams.name">
+                           type="text" placeholder="服务名字" v-model="queryParams.name">
                     <a class="uk-button uk-button-small" @click="query()"><i class="uk-icon-search"></i></a>
                 </div>
                 <div class="uk-width-1-6 uk-text-right">
@@ -190,13 +190,13 @@
         <table id="serviceList" class="uk-table uk-overflow-service uk-panel-box" style="table-layout: fixed; word-wrap: break-word">
             <thead>
             <tr>
-                <th class="uk-text-center table_colume_index">NO.</th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Network & IP</th>
-                <th class="uk-text-center">Replicas</th>
-                <th class="uk-text-center">Operation</th>
+                <th class="uk-text-center table_colume_index">序号</th>
+                <th>编号</th>
+                <th>名字</th>
+                <th>镜像</th>
+                <th>网络</th>
+                <th class="uk-text-center">实例</th>
+                <th class="uk-text-center">操作</th>
             </tr>
             </thead>
 
@@ -229,19 +229,19 @@
                 </td>
                 <td class="uk-text-middle uk-text-bold uk-text-success uk-text-small">
                     <span class="uk-text-success">
-                        Running: {{servicdTaskCountList[service.id]==null?"0":servicdTaskCountList[service.id].running}}
+                        运行: {{servicdTaskCountList[service.id]==null?"0":servicdTaskCountList[service.id].running}}
                     </span> <br/>
                     <span class="uk-text-danger">
-                        Others: {{servicdTaskCountList[service.id]==null?"0":servicdTaskCountList[service.id].others}}
+                        其他: {{servicdTaskCountList[service.id]==null?"0":servicdTaskCountList[service.id].others}}
                     </span> <br/>
                     <span class="uk-text-primary">
-                        Total: {{service.spec.mode.replicated.replicas}}
+                        合计: {{service.spec.mode.replicated.replicas}}
                     </span>
                 </td>
                 <td class="uk-text-center uk-text-middle">
                     <div class="uk-button-group">
                         <a :href="'viewer.html?id='+service.id" class="uk-button uk-button-primary uk-button-small">
-                            <span class="uk-icon-list-alt"></span> View
+                            <span class="uk-icon-list-alt"></span> 详情
                         </a>
                         <div data-uk-dropdown="{mode:'click'}">
                             <!-- 触发下拉菜单的按钮 -->
@@ -252,9 +252,9 @@
                                 <ul class="uk-nav uk-nav-dropdown uk-text-left">
                                     <li><a href="#"
                                            class=" uk-text-primary"
-                                           @click="scale(service)"><span class="uk-icon-sliders"></span> Scale</a></li>
+                                           @click="scale(service)"><span class="uk-icon-sliders"></span> 扩容</a></li>
                                     <li><a href="#" @click="remove(service)"
-                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> Remove</a></li>
+                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> 删除</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -270,17 +270,17 @@
                     <div class="uk-padding-remove" style="width: 92%;" >
                     <table class="uk-table uk-panel-box  uk-table-condensed">
                         <tr class="uk-alert">
-                            <td class="uk-text-bold">Task ID</td>
-                            <td class="uk-text-bold">Slot</td>
-                            <td class="uk-text-bold">Node</td>
-                            <td class="uk-text-bold">Container</td>
-                            <td class="uk-text-bold">State</td>
-                            <td class="uk-text-bold">Create</td>
+                            <td class="uk-text-bold">任务编号</td>
+                            <!--<td class="uk-text-bold">slot</td>-->
+                            <td class="uk-text-bold">运行节点</td>
+                            <td class="uk-text-bold">容器</td>
+                            <td class="uk-text-bold">状态</td>
+                            <td class="uk-text-bold">创建时间</td>
 
                         </tr>
                         <tr v-for="(task, index) in service.tasks">
                             <td class="uk-text-small">{{task.id | shortString(12)}}</td>
-                            <td class="uk-text-small">{{task.slot}}</td>
+                            <!--<td class="uk-text-small">{{task.slot}}</td>-->
                             <td class="uk-text-small">
                                 <a class="uk-text-success" :href="'../node/list.html?id='+task.nodeId">
                                     <span class="uk-text-warning">{{task.nodeName}}</span> /

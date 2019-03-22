@@ -68,9 +68,9 @@
         </h3>
 
         <ul class="uk-tab" data-uk-switcher="{connect:'#Viewers'}">
-            <li><a href="#"><span class="uk-icon-sliders"></span> Summery</a></li>
-            <li><a href="#"><span class="uk-icon-database"></span> Resource</a></li>
-            <li><a href="#"><span class="icon uk-icon-tasks"></span> Task</a></li>
+            <li><a href="#"><span class="uk-icon-sliders"></span> 总览</a></li>
+            <li><a href="#"><span class="uk-icon-database"></span> 资源</a></li>
+            <li><a href="#"><span class="icon uk-icon-tasks"></span> 任务</a></li>
         </ul>
         <div id="Viewers" class="uk-switcher">
             <div>
@@ -78,25 +78,25 @@
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Service infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> 服务信息</div>
                             </div>
                         </caption>
                         <tbody>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">ID </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">编号 </td>
                             <td class="uk-text-bold">{{viewService.id |shortString(12)}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Name </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">名字 </td>
                             <td class="uk-text-primary">{{viewService.spec.name}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Image </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">镜像 </td>
                             <td class="uk-text-success">{{viewService.spec.taskTemplate.containerSpec.image}}</td>
                         </tr>
 
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Cmd </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">命令 </td>
                             <td class="uk-text-warning">
                                 <span class="uk-text-warning">
                                     <span v-for="argItem in viewService.spec.taskTemplate.containerSpec.args">
@@ -106,15 +106,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Scheduling </td>
-                            <td class="uk-text-bold">{{viewService.spec.mode.replicated==null?"Global":"Replicate"}}</td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">模式 </td>
+                            <td class="uk-text-bold">{{viewService.spec.mode.replicated==null?"单实例":"多实例"}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Updated </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">更新 </td>
                             <td class="">{{viewService.updatedAt | strToDate}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Created </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">创建 </td>
                             <td class="">{{viewService.createdAt | strToDate}}</td>
                         </tr>
                         </tbody>
@@ -127,20 +127,20 @@
                 <table class="uk-table uk-overflow-container uk-panel-box">
                     <caption>
                         <div class="uk-grid">
-                            <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Service infomation</div>
+                            <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> 资源限制</div>
                         </div>
                     </caption>
                     <tbody>
                     <tr>
-                        <td class="uk-width-1-10 uk-text-right summeryField">CPU </td>
+                        <td class="uk-width-1-10 uk-text-right summeryField">处理器 </td>
                         <td class="uk-text-primary">{{viewService.spec.taskTemplate.resources.limits.nanoCPUs/1000000000}}</td>
                     </tr>
                     <tr>
-                        <td class="uk-width-1-10 uk-text-right summeryField">Memory </td>
+                        <td class="uk-width-1-10 uk-text-right summeryField">内存 </td>
                         <td class="uk-text-primary">{{viewService.spec.taskTemplate.resources.limits.memoryBytes/1024/1024}} MB</td>
                     </tr>
                     <tr v-if="viewService.spec.endpointSpec.ports.length!=0">
-                        <td class="uk-width-1-10 uk-text-right summeryField">Ports </td>
+                        <td class="uk-width-1-10 uk-text-right summeryField">端口映射 </td>
                         <td class="uk-text-muted">
                             <div v-for="port in viewService.spec.endpointSpec.ports">
                                 <h4 class="uk-margin-bottom-remove">
@@ -158,11 +158,11 @@
                        v-if="viewService.endpoint.virtualIPs.length!=0">
                     <caption>
                         <div class="uk-grid">
-                            <div class="uk-width-5-6"><span class="uk-icon-sitemap"></span> Network infomation</div>
+                            <div class="uk-width-5-6"><span class="uk-icon-sitemap"></span> 网络信息</div>
                         </div>
                     </caption>
                     <thead>
-                    <th class="uk-width-3-5">Network</th>
+                    <th class="uk-width-3-5">网络</th>
                     <th>IP</th>
                     </thead>
                     <tbody>
@@ -177,14 +177,14 @@
                        v-if="viewService.spec.taskTemplate.containerSpec.mounts.length!=0">
                     <caption>
                         <div class="uk-grid">
-                            <div class="uk-width-5-6"><span class="uk-icon-clone"></span> Mount infomation</div>
+                            <div class="uk-width-5-6"><span class="uk-icon-clone"></span> 文件装载</div>
                         </div>
                     </caption>
                     <thead>
-                    <th class="uk-width-1-10">Type</th>
-                    <th class="uk-width-4-10">Source</th>
-                    <th class="uk-width-4-10">Target</th>
-                    <th class="uk-width-1-10">ReadOnly</th>
+                    <th class="uk-width-1-10">类型</th>
+                    <th class="uk-width-4-10">资源</th>
+                    <th class="uk-width-4-10">目标</th>
+                    <th class="uk-width-1-10">只读</th>
                     </thead>
                     <tbody>
                     <tr v-for="mount in viewService.spec.taskTemplate.containerSpec.mounts">
@@ -204,12 +204,12 @@
                 <table id="taskList" class="uk-table uk-overflow-container uk-panel-box">
                     <thead>
                     <tr>
-                        <th class="uk-width-1-10 uk-text-center">ID</th>
-                        <th class="uk-width-1-10 uk-text-center">Slot</th>
-                        <th class="uk-width-2-10">Node <span class="uk-text-small uk-text-muted">( name / host )</span></th>
-                        <th class="uk-width-2-10">Container</th>
-                        <th class="uk-width-1-10 uk-text-center">State</th>
-                        <th class="uk-width-2-10 uk-text-center">Create</th>
+                        <th class="uk-width-1-10 uk-text-center">编号</th>
+                        <th class="uk-width-1-10 uk-text-center">槽</th>
+                        <th class="uk-width-2-10">节点 <span class="uk-text-small uk-text-muted">( name / host )</span></th>
+                        <th class="uk-width-2-10">容器</th>
+                        <th class="uk-width-1-10 uk-text-center">状态</th>
+                        <th class="uk-width-2-10 uk-text-center">创建</th>
                     </tr>
                     </thead>
 
