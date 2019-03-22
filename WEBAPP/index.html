@@ -65,22 +65,25 @@
         <div class="uk-panel uk-panel-box" style="height: 95%;  background-color: #444;">
             <!--<h3 class="uk-panel-title"><img src="img/sidebar_logo.png"/></h3>-->
             <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav>
+
+                <!--<div class="uk-form" style="padding-left: 10px; color:#FFFFFF">-->
+                    <!--<span class="uk-icon-server uk-margin-small-left uk-margin-small-right uk-text-middle"></span>-->
+                    <!--<select class="uk-form-width-small" v-model="user.defaultHost" autocomplete="off"-->
+                        <!--@change="changeHost()">-->
+                        <!--<option v-for="(host,index) in user.hosts"-->
+                                <!--:value="index">-->
+                            <!--<span class="uk-text-bold">{{host.name}}</span>-->
+                        <!--</option>-->
+                    <!--</select>-->
+                <!--</div>-->
                 <h3 class="uk-nav-divider"></h3>
-                <div class="uk-form" style="padding-left: 10px; color:#FFFFFF">
-                    <span class="uk-icon-server uk-margin-small-left uk-margin-small-right uk-text-middle"></span>
-                    <select class="uk-form-width-small" v-model="user.defaultHost" autocomplete="off"
-                        @change="changeHost()">
-                        <option v-for="(host,index) in user.hosts"
-                                :value="index">
-                            <span class="uk-text-bold">{{host.name}}</span>
-                        </option>
-                    </select>
-                </div>
+                <li>
+                    <a href="http://portal:8070" target="moduleFrame"><span class="icon uk-icon-cog"></span> 配置管理</a>
+                </li>
                 <h3 class="uk-nav-divider"></h3>
                 <li class="uk-active" v-if="user.role=='Admin'">
                     <a href="summary.html" target="moduleFrame"><span class="icon uk-icon-dashboard"></span> 总览</a>
                 </li>
-                <h3 class="uk-nav-divider" v-if="user.role=='Admin'"></h3>
                 <!--<li v-if="user.role=='Admin'">-->
                     <!--<a href="swarm.html" target="moduleFrame"><span class="icon uk-icon-connectdevelop"></span> 集群</a>-->
                 <!--</li>-->
@@ -112,9 +115,6 @@
                 <!--<li>-->
                     <!--<a href="setting.html" target="moduleFrame"><span class="icon uk-icon-cog"></span> 设置</a>-->
                 <!--</li>-->
-                <li>
-                    <a href="http://portal:8070" target="moduleFrame"><span class="icon uk-icon-cog"></span> 配置管理</a>
-                </li>
                 <!--<li>-->
                     <!--<a href="#" @click="logout()"><span class="icon uk-icon-sign-out"></span> Logout</a>-->
                 <!--</li>-->
