@@ -1,7 +1,7 @@
-version: '2'
+version: '3.2'
 services:
-  dockerfly:
-    build: .
+  manager:
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/dockerfly
     ports:
     - "28083:28083"
     volumes:
