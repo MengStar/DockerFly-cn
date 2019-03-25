@@ -50,7 +50,7 @@
                         }, function(status, errMsg){
                             blockDialog.hide()
                             var errorObj = eval("errorObj="+errMsg)
-                            alertError("Search image "+imageListVue.searchParams.name+" failed <br/>"+errorObj.errMsg);
+                            alertError("搜索镜像 "+imageListVue.searchParams.name+" 失败 <br/>"+errorObj.errMsg);
                             cmdHubImageInfo.close();
                             cmdHubImageInfo.release();
                         })
@@ -72,14 +72,14 @@
                             cmdImageCreate.send(function(msg){
                                 blockDialog.hide();
                                 alert("<span class='uk-text-large uk-text-primary'>" +
-                                    "Pull image " +
-                                    "finished.</span>")
+                                    "拉取镜像" +
+                                    "完成.</span>")
                                 cmdImageCreate.close();
                                 cmdImageCreate.release();
                             }, function(status, errMsg){
                                 blockDialog.hide();
                                 var errorObj = eval("errorObj="+errMsg)
-                                alertError("Pull image failed <br/>"+errorObj.errMsg);
+                                alertError("拉取镜像失败 <br/>"+errorObj.errMsg);
                                 cmdImageCreate.close();
                                 cmdImageCreate.release();
                             });
@@ -100,7 +100,7 @@
         <div class="uk-grid uk-margin">
             <div class="uk-width-1-2">
                 <h3 class="uk-text-middle">
-                    <span class="icon uk-icon-object-group"></span>&nbsp;Pull image from docker hub
+                    <span class="icon uk-icon-object-group"></span>&nbsp;从公共仓库拉取镜像
                 </h3>
             </div>
         </div>
@@ -108,7 +108,7 @@
             <div class="uk-panel uk-panel-box uk-text-bold uk-margin-bottom">
                 <div class="uk-grid">
                     <div class="uk-width-5-6 uk-form">
-                        <span class="mr5">Name:</span>
+                        <span class="mr5">镜像名:</span>
                         <input class="uk-form-width-medium"
                                type="text" placeholder="e.g. nginx" v-model="searchParams.name"/>
                         <select v-model="searchParams.limit">
@@ -145,7 +145,7 @@
                             </div>
                             <div class="uk-text-right uk-position-bottom-right uk-margin-bottom uk-margin-large-right">
                                 <a href="#" class="uk-button uk-button-small uk-button-success"
-                                   @click="pull(hubImage)"><span class="uk-icon-cloud-download"></span> Pull </a>
+                                   @click="pull(hubImage)"><span class="uk-icon-cloud-download"></span> 拉取 </a>
                             </div>
                         </div>
                     </div>

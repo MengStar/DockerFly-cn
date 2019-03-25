@@ -1,6 +1,6 @@
 FROM nimmis/alpine-java:oracle-8-jdk
 
-MAINTAINER helyho <helyho@gmail.com>
+MAINTAINER 刘星 <mengstars@qq.com>
 
 RUN mkdir /dockerfly
 

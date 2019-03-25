@@ -54,7 +54,7 @@
                 //移除方法
                 remove: function (volume) {
                     name = volume.name
-                    UIkit.modal.confirm("<span class='uk-text-large uk-text-danger'>Are you sure to remove ?</span> <hr> " +
+                    UIkit.modal.confirm("<span class='uk-text-large uk-text-danger'>你确定删除挂载吗 ?</span> <hr> " +
                         "<span class='uk-text-primary'>" + name + "</span>", function () {
                         try {
                             var cmdVolumeRemove = new CmdVolumeRemove(name);
@@ -99,7 +99,7 @@
         <div class="uk-grid uk-margin">
             <div class="uk-width-1-2">
                 <h3 class="uk-text-middle">
-                    <span class="icon uk-icon-clone"></span> Volume manager
+                    <span class="icon uk-icon-clone"></span> 挂载管理
                 </h3>
             </div>
             <div class="uk-width-1-2 uk-text-right">
@@ -109,7 +109,7 @@
         <div class="uk-panel uk-panel-box uk-text-bold">
             <div class="uk-grid">
                 <div class="uk-width-5-6 uk-form">
-                    <span class="mr5">Name:</span><input class="uk-form-width-medium" id="nameOrId"
+                    <span class="mr5">名字:</span><input class="uk-form-width-medium" id="nameOrId"
                         type="text" placeholder="volume name" v-model="queryParams.name">
                     <a class="uk-button uk-button-small" @click="query()"><i class="uk-icon-search"></i></a>
                 </div>
@@ -122,12 +122,12 @@
         <table id="volumeList" class="uk-table uk-overflow-container uk-panel-box">
             <thead>
             <tr>
-                <th class="uk-text-center table_colume_index">NO.</th>
-                <th class="uk-width-2-10">Name</th>
-                <th class="uk-width-1-10">Driver</th>
-                <th class="uk-width-1-10">Scope</th>
-                <th class="uk-width-2-10">Mount Point</th>
-                <th class="uk-text-center">Operation</th>
+                <th class="uk-text-center table_colume_index">序号.</th>
+                <th class="uk-width-2-10">名字</th>
+                <th class="uk-width-1-10">类型</th>
+                <!--<th class="uk-width-1-10">范围</th>-->
+                <th class="uk-width-2-10">挂载点</th>
+                <th class="uk-text-center">操作</th>
             </tr>
             </thead>
 
@@ -135,13 +135,13 @@
             <tr v-for="(volume,index) in volumeList">
                 <td class="uk-text-center uk-text-middle uk-text-small">{{index+1}}</td>
                 <td class="uk-text-bold uk-text-middle uk-text-primary" :title="volume.name">{{volume.name |shortString(18)}}</td>
-                <td>{{volume.scope}}</td>
+                <!--<td>{{volume.scope}}</td>-->
                 <td>{{volume.driver}}</td>
                 <td class="uk-text-bold uk-text-middle uk-text-success">{{volume.mountpoint |shortString(60)}}</td>
                 <td class="uk-text-center uk-text-middle">
                     <div class="uk-button-group">
                         <a :href="'viewer.html?id='+volume.name" class="uk-button uk-button-primary uk-button-small">
-                            <span class="uk-icon-list-alt"></span> View
+                            <span class="uk-icon-list-alt"></span> 详情
                         </a>
                         <div data-uk-dropdown="{mode:'click'}">
                             <!-- 触发下拉菜单的按钮 -->
@@ -150,7 +150,7 @@
                             <div class="uk-dropdown uk-dropdown-small">
                                 <ul class="uk-nav uk-nav-dropdown uk-text-left">
                                     <li><a href="#" @click="remove(volume)"
-                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> Remove</a></li>
+                                           class=" uk-text-danger"><span class="uk-icon-trash"></span> 删除</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -164,16 +164,16 @@
     <div id="createVolumeDialog" class="uk-modal">
         <div class="uk-modal-dialog uk-overflow-container">
             <a href="#" class="uk-modal-close uk-close uk-close-alt"></a>
-            <div class="uk-modal-header"><h3 class="uk-text-primary uk-text-bold"><span class="icon uk-icon-clone"></span>&nbsp;Create a new volume</h3></div>
+            <div class="uk-modal-header"><h3 class="uk-text-primary uk-text-bold"><span class="icon uk-icon-clone"></span>&nbsp;新建挂载</h3></div>
             <div class="uk-form">
                 <table class="uk-table uk-overflow-container uk-panel-box">
                     <tr>
-                        <td class="dialogField">Name:</td>
+                        <td class="dialogField">名字:</td>
                         <td><input type="text"
                                    placeholder="volume name" v-model="createParams.name"/></td>
                     </tr>
                     <tr>
-                        <td class="dialogField">Driver:</td>
+                        <td class="dialogField">类型:</td>
                         <td>
                             <select class="uk-form-width-medium" v-model="createParams.driver">
                                 <option value="local">local</option>
@@ -182,7 +182,7 @@
                     </tr>
                     <tr>
                         <td class="uk-text-right" colspan="2">
-                            <a href="#" class="uk-button uk-button-primary" value="Create" @click="create()">Create</a>
+                            <a href="#" class="uk-button uk-button-primary" value="Create" @click="create()">创建</a>
                         </td>
                     </tr>
                 </table>

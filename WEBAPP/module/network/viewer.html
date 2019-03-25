@@ -63,8 +63,8 @@
         </h3>
 
         <ul class="uk-tab" data-uk-switcher="{connect:'#Viewers'}">
-            <li><a href="#"><span class="uk-icon-sliders"></span> Summery</a></li>
-            <li><a href="#"><span class="uk-icon-desktop"></span> Container</a></li>
+            <li><a href="#"><span class="uk-icon-sliders"></span> 总览</a></li>
+            <li><a href="#"><span class="uk-icon-desktop"></span> 容器</a></li>
         </ul>
         <div id="Viewers" class="uk-switcher">
             <div>
@@ -72,7 +72,7 @@
                     <table class="uk-table uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Network infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> 网络信息</div>
                             </div>
                         </caption>
                         <tbody>
@@ -81,40 +81,40 @@
                             <td class="uk-text-bold">{{viewNetwork.id |shortString(12)}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Name </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">名字 </td>
                             <td class="uk-text-primary">{{viewNetwork.name}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Scope </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">范围 </td>
                             <td class="uk-text-success">{{viewNetwork.scope}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Driver </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">类型 </td>
                             <td class="uk-text-warning">{{viewNetwork.driver}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">EnableIPv6 </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">IPv6 </td>
                             <td class="uk-text-muted">{{viewNetwork.enableIPv6}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Internal </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">内网 </td>
                             <td class="uk-text-muted">{{viewNetwork.internal}}</td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Attachable </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">加入 </td>
                             <td class="uk-text-muted">{{viewNetwork.attachable}}</td>
                         </tr>
                         <tr v-if="viewNetwork.ipam.config.length!=0">
                             <td class="uk-width-1-10 uk-text-right summeryField">IP </td>
                             <td class="uk-text-bold">
                                 <div v-for="ipConfig in viewNetwork.ipam.config">
-                                    <span class="uk-badge">Subnet</span><code>{{ipConfig.subnet}}</code>
-                                    <span class="uk-badge">Gateway</span><code>{{ipConfig.gateway}}</code>
+                                    <span class="uk-badge">子网</span><code>{{ipConfig.subnet}}</code>
+                                    <span class="uk-badge">网关</span><code>{{ipConfig.gateway}}</code>
                                 </div>
                             </td>
                         </tr>
                         <tr v-if="JSON.stringify(viewNetwork.options)!='{}'">
-                            <td class="uk-width-1-10 uk-text-right summeryField">Options </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">详情 </td>
                             <td class="uk-text-bold">
                                 <div v-for="(value, key) in viewNetwork.options">
                                     <code>{{key}}<span class="uk-text-primary uk-text-bold" > = </span><span class="uk-text-success">{{value}}</span></code>
@@ -122,7 +122,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="uk-width-1-10 uk-text-right summeryField">Created </td>
+                            <td class="uk-width-1-10 uk-text-right summeryField">创建 </td>
                             <td class="">{{viewNetwork.created | strToDate}}</td>
                         </tr>
                         </tbody>
@@ -130,11 +130,11 @@
                     <table class="uk-table uk-overflow-container uk-panel-box" v-if="viewNetwork.peers.length!=0">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Peer infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-info-circle"></span> Host信息</div>
                             </div>
                         </caption>
                         <thead>
-                        <th>Host Name</th>
+                        <th>Host</th>
                         <th>IP</th>
                         </thead>
                         <tbody>
@@ -152,15 +152,15 @@
                     <table class="uk-table uk-table-condensed uk-overflow-container uk-panel-box">
                         <caption>
                             <div class="uk-grid">
-                                <div class="uk-width-5-6"><span class="uk-icon-desktop"></span> Container infomation</div>
+                                <div class="uk-width-5-6"><span class="uk-icon-desktop"></span> 容器信息</div>
                             </div>
                         </caption>
                         <thead>
-                        <th class="uk-width-1-5 uk-text-center">ID</th>
-                        <th class="uk-width-1-5">Name</th>
-                        <th class="uk-width-1-5 uk-text-center">IPv4Address</th>
-                        <th class="uk-width-1-5 uk-text-center">MacAddress</th>
-                        <th class="uk-width-1-5 uk-text-center">Disconnect</th>
+                        <th class="uk-width-1-5 uk-text-center">编号</th>
+                        <th class="uk-width-1-5">名字</th>
+                        <th class="uk-width-1-5 uk-text-center">IPv4地址</th>
+                        <th class="uk-width-1-5 uk-text-center">Mac地址</th>
+                        <th class="uk-width-1-5 uk-text-center">断开</th>
                         </thead>
                         <tbody>
                         <tr v-for="(container, id) in viewNetwork.containers">
