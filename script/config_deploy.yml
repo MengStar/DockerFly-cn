@@ -3,7 +3,6 @@ services:
   sync:
     image: registry.cn-hangzhou.aliyuncs.com/mengstars/sync
     deploy:
-      replicas: 1
       replicas: 2
     networks:
       - arcms
