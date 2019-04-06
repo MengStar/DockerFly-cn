@@ -11,7 +11,7 @@ services:
   admin:
     image: registry.cn-hangzhou.aliyuncs.com/mengstars/admin
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
         delay: 5s
     networks:
@@ -28,6 +28,36 @@ services:
       - arcms
     ports:
       - 8070:8070
+  publish:
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/publish
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+    networks:
+      - arcms
+    ports:
+      - 8071:8071
+  web:
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/web
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+    networks:
+      - arcms
+    ports:
+      - 8072:8072
+  auth:
+    image: registry.cn-hangzhou.aliyuncs.com/mengstars/auth
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+    networks:
+      - arcms
+    ports:
+      - 8073:8073
 networks:
   arcms:
     driver: overlay
